@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vimo app</title>
+    {% load static %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/emily.css' %}">
+
+    <style>
+        body {
+            background-image: url("{% static 'images/desert1.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+
+        }
+        .era1{
+            background-color:transparent;
+
+        }
+        .tomy{
+            background-color:deeppink;
+            border:20px solid deeppink;
+            border-radius:50px 50px 50px 50px;
+        }
+        .tui{
+            font-family:georgia,times new roman,times,serif;
+            font-size: 40px;
+        }
+        .toti{
+            font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size:20px;
+        }
+        .zoo{
+            color:white;
+            text-decoration: none;
+            background-color:deeppink;
+            border:10px solid deeppink;
+            border-radius:10px 10px 10px 10px;
+
+        }
+        .xoo{
+            font-size: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    {% if messages %}
+{% for message in messages %}
+    <li style="color:{% if message.tag == "completed" %}
+        green{% else%}red{% endif %}">{{ message }}
+    </li>
+
+ {% endfor %}
+{% endif %}
+
+{% block content %}
+    <header class="era1" >
+        <a href="#" class="tomy"> vimo</a>
+        <a href="{% url 'home' %}" class="tomy">home</a>
+        <a href="{% url 'about' %}" class="tomy">about</a>
+    <nav class="jok">
+        <ul>
+        <li><a href="{% url 'contact' %}" class="sim">contact</a></li>
+        <li><a href="{% url 'login' %}" class="sim">login</a></li>
+            <li><a href="{% url 'register_user' %}" class="sim">register</a></li>
+            <li><a href="{% url 'logout' %}" class="sim">logout</a></li>
+        </ul>
+
+    </nav>
+
+    </header>
+    <section>
+    <h1 class="tui">welcome to vimo</h1>
+        <p class="toti">get to pick one of your favorite tourist site with just a snap</p>
+    </section>
+    <br>
+    <br>
+    <section>
+    <p class="xoo">need to be a member <a href="{% url 'register_user' %}" class="zoo">register</a></p>
+    </section>
+
+{% endblock %}
+
+</body>
+</html>
