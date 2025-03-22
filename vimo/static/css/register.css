@@ -1,0 +1,52 @@
+body{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+
+
+
+}
+.tini{
+ background-color:transparent;
+  display:block;
+    border-radius:10px 10px 10px 10px;
+    justify-content: center;
+    width:500px;
+
+}
+h1{
+    color:white;
+    justify-content: center;
+    text-align: center;
+}
+.telex{
+    position:relative;
+    width:100%;
+    height:60%;
+}
+
+.telex input{
+    width:100%;
+    height:30px;
+border:none;
+    outline:none;
+    border-radius: 10px 10px 10px 10px;
+}
+.telex input::placeholder{
+  color:black;
+}
+.no input{
+    width:100%;
+}
+.telex i{
+    color:black;
+    position: absolute;
+    right:20px;
+    font-size:20px;
+    align-items: center;
+}
+button{
+    width:100%;
+    border-radius: 10px 10px 10px 10px;
+}

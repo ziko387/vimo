@@ -15,15 +15,10 @@ def home(request):
 
 def register_user(request):
     if request.method == "POST":
-        username = request.POST['username']
-        password = request.POST['password']
-        email = request.POST['email']
-        phone_number = request.POST['phone_number']
-        user = authenticate(request, username=username, password=password,phone_number=phone_number)
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('home')
+       form = UserCreationForm(request.POST)
+       if form.is_valid():
+          form.save()
+          return redirect('home')
 
     else:
         form = UserCreationForm()
@@ -32,15 +27,14 @@ def register_user(request):
 
 
 
+
+
 def login_user(request):
     if request.method == "POST":
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        email = request.POST.get('email')
-        user = authenticate(request, username=username, password=password,email=email,)
-        form = AuthenticationForm(data=request.POST)
-        if user and form.is_valid():
-            login(request, user)
+        form=AuthenticationForm(data= request.POST)
+        if form.is_valid():
+            user=form.get_user()
+            login(request,user)
             return redirect('home')
 
     else:
