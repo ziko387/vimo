@@ -15,10 +15,12 @@ def home(request):
 
 def register_user(request):
     if request.method == "POST":
-       form = UserCreationForm(request.POST)
-       if form.is_valid():
-          form.save()
-          return redirect('home')
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+           form.save()
+           return redirect('login_user')
+        else:
+            return render(request,'registration.html',{'form':form})
 
     else:
         form = UserCreationForm()
