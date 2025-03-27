@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from .form import CustomUserCreationForm
 
 # Create your views here.
 
@@ -15,7 +16,7 @@ def home(request):
 
 def register_user(request):
     if request.method == "POST":
-        form = UserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST,request.FILES)
         if form.is_valid():
            form.save()
            return redirect('login_user')
@@ -23,7 +24,7 @@ def register_user(request):
             return render(request,'registration.html',{'form':form})
 
     else:
-        form = UserCreationForm()
+        form = CustomUserCreationForm()
         return render(request,'registration.html',{'form':form})
 
 

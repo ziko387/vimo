@@ -8,59 +8,57 @@
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/register.css' %}">
-
     <title>register</title>
     <style>
-         body {
-             background-image: url("{% static 'images/doi1.jpg' %}");
-             background-size: cover;
-            background-position: center;
+        body{
+            background-image: url("{% static 'images/doi1.jpg' %}");
+            background-size: cover;
+            background-position:center;
             background-repeat: no-repeat;
             background-attachment: fixed;
-         }
-         .tini{
-             background-color: transparent;
-             border: 2px solid gray;
-             backdrop-filter: blur(5px);
-         }
-     </style>
-
+        }
+        .terry{
+            background-color:transparent;
+            border:2px solid lightgrey;
+            height:350px;
+            border-radius:10px 10px 10px 10px;
+            backdrop-filter: blur(5px);
+        }
+        input{
+            border:2px solid green;
+        }
+        label{
+            color:white;
+        }
+        h1{
+            color:white;
+        }
+        p{
+            color:white;
+            font-size:20px;
+            font-weight:bold;
+        }
+        a{
+            align-content: end;
+            justify-items: end;
+        }
+    </style>
 </head>
 <body>
-<form method="POST" action="{% url 'register_user' %}">
+<div class="terry">
+<form enctype="multipart/form-data" method="post">
     {% csrf_token %}
-     <div class="tini">
-      <h1>register</h1>
-         <div class="telex">
-             <label for="username"></label>
-             <input type="text" name="username" id="username" placeholder="Username" required>
-             <i class='bx bx-user'></i>
-             <br>
-             <div class="telex">
-                 <label for="password1"></label>
-                 <input type="password" name="password1" id="password1" placeholder="Password1" required>
-                 <i class='bx bxs-lock-alt'></i>
-                 <br>
-                 <div class="telex">
-                     <label for="password2"></label>
-                     <input type="password" name="password2" id="password2" placeholder="confirm password" required>
-                     <i class='bx bxs-lock-alt'></i>
-                     <br>
-                     <div class="telex">
-                         <label for="email"></label>
-                         <input type="email" name="email" id="email" placeholder="email" required>
-                         <i class='bx bxs-envelope' ></i>
-                     </div>
-                     <br>
-                     <button type="submit" class="no">register</button>
-                 </div>
-             </div>
-         </div>
-     </div>
-
-
+    <h1>register</h1>
+     {% for field in form%}
+         <label>{{ field.label }}</label>
+    {{ field }}
+         <small>{{ field.error }}</small>
+    {% endfor %}
+    <br>
+    <br>
+<button type="submit">signup</button>
     </form>
-
-
+<p>already have an account <a href="{% url 'login_user' %}">login</a></p>
+</div>
 </body>
 </html>
