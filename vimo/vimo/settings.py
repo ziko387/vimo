@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "vimoapp",
+    "vimo"
 ]
 
 MIDDLEWARE = [
@@ -81,7 +82,7 @@ USE_I18N = True
 USE_TZ = True
 MEDIA_URL = '/media/'
 MEDIA_ROOT=BASE_DIR/'media/'
-AUTH_USER_MODEL = 'vimo.CustomUser'
+AUTH_USER_MODEL = 'vimoapp.CustomUser'
 
 
 
