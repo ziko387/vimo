@@ -19,12 +19,14 @@ def register_user(request):
         form = CustomUserCreationForm(request.POST,request.FILES)
         print(form.is_valid())
         if form.is_valid():
-           form.save()
-           return redirect('login_user')
+            form.save()
+            return redirect('login_user')
+        else:
+            return render(request,'registration.html',{'form':form})
 
     else:
         form = CustomUserCreationForm()
-        return render(request,'registration.html',{'form':form})
+    return render(request,'registration.html',{'form':form})
 
 
 
@@ -41,7 +43,7 @@ def login_user(request):
 
     else:
         form = AuthenticationForm()#intializrer#
-        return render(request,'login.html',{'form':form})
+    return render(request,'login.html',{'form':form})
 
 
 
